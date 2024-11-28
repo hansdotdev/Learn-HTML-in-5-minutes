@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn HTML in 5 Minutes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section id="learning-container">
+    <h1>Learn HTML in 5 Minutes</h1>
+    <a href="portfolio.html" class="made">By Hans Lining</a>
+  </section>
+
+
+  <div id="steps-container">
+    <!-- Steps will appear here -->
+  </div>
+
+  <div id="button-container" class="buttons">
+    <button class="button" id="startButton" onclick="revealStep()">Start</button>
+  </div>
+
+  <footer style="display: none;">Made by Hans Lining</footer>
+
+
+  <script>
+    // Define the steps
+    const steps = [
+      {
+        title: "Step 1: What is HTML?",
+        content: `
+          HTML (HyperText Markup Language) is the standard language for creating web pages.<br>
+          Example:
+          <pre>
+  &lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+      Hello World!
+    &lt;/body&gt;
+  &lt;/html&gt;
+          </pre>
+        `,
+      },
+      {
+        title: "Step 2: Basic Structure",
+        content: `
+          Every HTML document needs a structure:<br>
+          <pre>
+  &lt;html&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;...&lt;/body&gt;
+  &lt;/html&gt;
+          </pre>
+        `,
+      },
+      {
+        title: "Step 3: Text Elements",
+        content: `
+          Use these tags to structure text:
+          <ul>
+            <li>&lt;h1&gt; to &lt;h6&gt;: Headings</li>
+            <li>&lt;p&gt;: Paragraphs</li>
+            <li>&lt;strong&gt; and &lt;em&gt;: Emphasis</li>
+          </ul>
+        `,
+      },
+      {
+        title: "Step 4: Links and Images",
+        content: `
+          Link to other pages and add images:<br>
+          <pre>
+  &lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;<br>
+  &lt;img src="image.jpg" alt="Description"&gt;
+          </pre>
+        `,
+      },
+      {
+        title: "Step 5: Wrap-Up",
+        content: `
+          Great job! You've learned the basics of HTML. Practice and build your own pages!
+        `,
+      },
+    ];
+  
+    let currentStep = 0;
+  
+    function revealStep() {
+      if (currentStep < steps.length) {
+        const step = steps[currentStep];
+        const stepsContainer = document.getElementById("steps-container");
+        const buttonContainer = document.getElementById("button-container");
+  
+        // Create a new step element
+        const stepElement = document.createElement("section");
+        stepElement.className = "step";
+        stepElement.innerHTML = `
+          <h2>${step.title}</h2>
+          <div>${step.content}</div>
+        `;
+  
+        // Append the new step to the container
+        stepsContainer.appendChild(stepElement);
+  
+        // Move the button container below the new step
+        stepsContainer.appendChild(buttonContainer);
+  
+        // Increment the current step index
+        currentStep++;
+  
+        // Update button text
+        const startButton = document.getElementById("startButton");
+        if (currentStep === steps.length) {
+          startButton.textContent = "Finish";
+        } else {
+          startButton.textContent = "Next Step";
+        }
+  
+        // If all steps are completed, hide the button and show the footer
+        if (currentStep === steps.length) {
+          startButton.style.display = "none"; // Hide the button
+          const footer = document.createElement("footer");
+          footer.innerHTML = "<p>Made by Hans Lining</p>"; // Add footer content
+          stepsContainer.appendChild(footer); // Append footer
+        }
+      }
+    }
+  </script>
+  
+
+</body>
+</html>

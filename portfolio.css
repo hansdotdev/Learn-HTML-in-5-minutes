@@ -694,6 +694,11 @@ footer p {
         width: 100px;
         height: 50px;
     }
+    .folder-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 20px; 
+    }
+
     #title{
         color: #ff9800;
         font-size: 12px;
